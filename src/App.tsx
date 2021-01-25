@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
+import styled from 'styled-components';
+
 import './App.css';
+import { requests } from './request';
+
+import { Row } from './Row';
+import { Banner } from './Banner';
+import { Nav } from './Nav';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainerWithStyled>
+      <Banner />
+      <Nav />
+      <Row
+        title="NETFLIX ORIGINALS"
+        fetchUrl={requests.fetchNetflixOriginals}
+        isLargeRow
+      />
+      <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
+      <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
+      <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
+      <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
+      <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
+      <Row title="Documentaries" fetchUrl={requests.fetchDocumentMovies} />
+  </AppContainerWithStyled>
+
   );
 }
+
+const AppContainerWithStyled = styled.div`
+  background-color: #111;
+`;
 
 export default App;
